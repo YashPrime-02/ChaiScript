@@ -1,17 +1,59 @@
-export default function TopicSection({ section }) {
+import { useState } from "react";
+
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+
+import {
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import { useTheme } from "../../context/ThemeContext";
+
+export default function TopicSection({ section, index }) {
+  const { theme } = useTheme();
+
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(section.rawCode);
+
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Copy failed", error);
+    }
+  };
+
   return (
-    <section className="topic-section">
+    <section id={`section-${index}`} className="topic-section">
+      <div className="topic-section__header">
+        <h2 className="topic-section__title">📘 {section.title}</h2>
 
-      <h2>
-        {section.title}
-      </h2>
+        <div className="topic-section__actions">
+          {section.sourceFile && (
+            <span className="topic-section__source">{section.sourceFile}</span>
+          )}
 
-      <pre>
-        <code>
+          <button className="copy-btn" onClick={handleCopy}>
+            {copied ? "✅ Copied" : "📋 Copy"}
+          </button>
+        </div>
+      </div>
+
+      <div className="topic-section__body">
+        <SyntaxHighlighter
+          language="javascript"
+          style={theme === "dark" ? oneDark : oneLight}
+          showLineNumbers
+          wrapLongLines
+        >
           {section.rawCode}
-        </code>
-      </pre>
-
+        </SyntaxHighlighter>
+      </div>
     </section>
   );
 }
