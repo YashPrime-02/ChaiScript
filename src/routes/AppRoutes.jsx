@@ -9,6 +9,8 @@ import MainLayout from "../layouts/MainLayout";
 import '../styles/globals.css';
 import '../styles/animations.css';
 import '../styles/variables.css';
+import '../styles/layout.css';
+
 // Lazy Pages
 const Home = lazy(() => import("../pages/Home/Home"));
 const Topics = lazy(() => import("../pages/Topics/Topics"));
