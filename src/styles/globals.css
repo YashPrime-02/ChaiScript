@@ -1,0 +1,18 @@
+:root {
+
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #171717;
+
+  --text-primary: #fafafa;
+  --text-secondary: #b3b3b3;
+
+  --accent: #7c3aed;
+
+  --border: #262626;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+}
