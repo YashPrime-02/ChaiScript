@@ -16,7 +16,7 @@ export default function TopicDetails() {
   const [activeSection, setActiveSection] = useState(0);
 
   const { data, isLoading, error } = useTopic(topicId);
-
+  const [forceExpand, setForceExpand] = useState(null);
   const topic = data?.data;
 
   useEffect(() => {
@@ -38,7 +38,6 @@ export default function TopicDetails() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [topic]);
-  
 
   if (isLoading) {
     return <LoadingState message="Loading Topic..." />;
@@ -54,28 +53,33 @@ export default function TopicDetails() {
 
   return (
     <>
-    <ReadingProgress />
-    <PageContainer>
-      <section className="topic-hero">
-        <span className="topic-badge">{topic.difficulty || "JavaScript"}</span>
+      <ReadingProgress />
+      <PageContainer>
+        <section className="topic-hero">
+          <span className="topic-badge">
+            {topic.difficulty || "JavaScript"}
+          </span>
 
-        <h1 className="topic-title">{topic.title}</h1>
+          <h1 className="topic-title">{topic.title}</h1>
 
-        <p className="topic-description">{topic.description}</p>
+          <p className="topic-description">{topic.description}</p>
 
-        <div className="topic-meta">
-          <span>📚 {topic.sections.length} Sections</span>
+          <div className="topic-meta">
+            <span>📚 {topic.sections.length} Sections</span>
+          </div>
+
+          
+        </section>
+
+        <div className="topic-layout">
+          <TopicSidebar
+            sections={topic.sections}
+            activeSection={activeSection}
+          />
+
+          <TopicContent sections={topic.sections} />
         </div>
-      </section>
-
-      <div className="topic-layout">
-        <TopicSidebar sections={topic.sections} activeSection={activeSection} />
-
-        <TopicContent sections={topic.sections} />
-      </div>
-    </PageContainer>
-    
+      </PageContainer>
     </>
-
   );
 }

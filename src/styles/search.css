@@ -1,0 +1,31 @@
+.search-bar {
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 100%;
+
+  padding: 1rem 1.25rem;
+
+  border-radius: 16px;
+
+  border: 1px solid var(--border);
+
+  background: var(--bg-card);
+
+  color: var(--text-primary);
+
+  font-size: 1rem;
+  margin: 2% auto;
+  transition: 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(99, 102, 241, 0.15);
+}
