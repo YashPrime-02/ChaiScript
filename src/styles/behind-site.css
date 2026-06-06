@@ -883,7 +883,7 @@
 /* Touch Target Improvements */
 
 .scroll-down {
-  min-height: 44px;
+  min-height: 24px;
 
   display: flex;
 

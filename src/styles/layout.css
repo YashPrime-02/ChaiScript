@@ -35,22 +35,61 @@
    LOGO
 =================================== */
 
+
+/* ===================================
+   LOGO
+=================================== */
+
 .navbar__logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
   text-decoration: none;
 
   color: var(--text-primary);
 
-  font-size: 1.4rem;
-  font-weight: 800;
-
-  letter-spacing: -0.5px;
-
-  transition: color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .navbar__logo:hover {
   color: var(--accent);
 }
+
+.navbar__logo-image {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.navbar__logo:hover .navbar__logo-image {
+  transform: scale(1.08);
+}
+
+.navbar__logo-text {
+  font-size: 1.4rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+
+  line-height: 1;
+}
+
+
 
 /* ===================================
    NAV LINKS
@@ -261,11 +300,53 @@
   color: var(--text-secondary);
 }
 
+.footer__brand-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.footer__brand-logo {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+}
+
+.footer__brand h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+
+  line-height: 1;
+}
+
 /* ===================================
    TABLET
 =================================== */
 
 @media (max-width: 992px) {
+  .footer__brand-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer__brand h3 {
+    font-size: 1.25rem;
+  }
 
   .footer__top {
     gap: 2rem;
@@ -273,6 +354,19 @@
 
   .footer__links {
     gap: 2rem;
+  }
+
+  .navbar__logo {
+    font-size: 1rem;
+  }
+
+  .navbar__logo-image {
+    width: 34px;
+    height: 34px;
+  }
+
+  .navbar__logo-text {
+    font-size: 1.05rem;
   }
 }
 

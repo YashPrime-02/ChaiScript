@@ -9,30 +9,22 @@ function Navbar() {
 
   return (
     <header className="navbar">
+      <Link to="/" className="navbar__logo">
+        <img
+          src="/Favicon.png"
+          alt="ChaiScript Logo"
+          className="navbar__logo-image"
+        />
 
-      <Link
-        to="/"
-        className="navbar__logo"
-      >
-        ☕ ChaiScript
+        <span className="navbar__logo-text">ChaiScript</span>
       </Link>
 
-      <nav
-        className={`navbar__nav ${
-          menuOpen ? "navbar__nav--open" : ""
-        }`}
-      >
-        <NavLink
-          to="/"
-          onClick={() => setMenuOpen(false)}
-        >
+      <nav className={`navbar__nav ${menuOpen ? "navbar__nav--open" : ""}`}>
+        <NavLink to="/" onClick={() => setMenuOpen(false)}>
           Home
         </NavLink>
 
-        <NavLink
-          to="/topics"
-          onClick={() => setMenuOpen(false)}
-        >
+        <NavLink to="/topics" onClick={() => setMenuOpen(false)}>
           Topics
         </NavLink>
 
@@ -45,11 +37,7 @@ function Navbar() {
       </nav>
 
       <div className="navbar__actions">
-
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-        >
+        <button className="theme-toggle" onClick={toggleTheme}>
           {theme === "dark" ? "☀️" : "🌙"}
         </button>
 
@@ -59,9 +47,7 @@ function Navbar() {
         >
           {menuOpen ? "✕" : "☰"}
         </button>
-
       </div>
-
     </header>
   );
 }
