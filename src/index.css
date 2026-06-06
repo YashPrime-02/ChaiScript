@@ -101,16 +101,8 @@ html {
   border-radius: 8px;
 }
 
-/* Interactive elements */
 
-a,
-button,
-input,
-textarea,
-select,
-[role="button"] {
-  min-height: 36px;
-}
+
 
 /* Better button cursor */
 
