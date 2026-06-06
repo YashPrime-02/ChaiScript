@@ -109,7 +109,7 @@ input,
 textarea,
 select,
 [role="button"] {
-  min-height: 24px;
+  min-height: 36px;
 }
 
 /* Better button cursor */
