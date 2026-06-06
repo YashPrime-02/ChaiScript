@@ -288,15 +288,8 @@ export default function BackgroundBehindSite() {
           Chai Aur Code
         </h2>
 
-        <p
-          style={{
-            maxWidth: "900px",
-            marginTop: "2rem",
-            color: "var(--text-secondary)",
-            textAlign: "center",
-            lineHeight: "1.9",
-          }}
-        >
+        <p className="topics-hero__footer-text">
+
           A tribute to the teaching style of
           Hitesh Choudhary that made JavaScript
           approachable, practical and enjoyable.

@@ -892,6 +892,46 @@
   justify-content: center;
 }
 
+.topics-hero__footer-text {
+  max-width: 900px;
+
+  margin:
+    2rem auto 0;
+
+  color: var(--text-secondary);
+
+  text-align: center;
+
+  line-height: 1.9;
+
+  font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+
+  .topics-hero__footer-text {
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+
+    margin-top: 1.5rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .topics-hero__footer-text {
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+
+    margin-top: 1.25rem;
+  }
+
+}
+
 /* Reduced Motion Support */
 
 @media (prefers-reduced-motion: reduce) {
