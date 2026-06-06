@@ -1,13 +1,15 @@
 import AppRoutes from "./routes/AppRoutes";
-import './index.css';
-import { Analytics } from "@vercel/analytics/react";   // ← Correct for Vite/React
+import "./index.css";
+
+import { Analytics } from "@vercel/analytics/react";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <>
-      <AppRoutes />
-      <Analytics />
-    </>
+    <HelmetProvider>
+      {" "}
+      <AppRoutes /> <Analytics />{" "}
+    </HelmetProvider>
   );
 }
 
