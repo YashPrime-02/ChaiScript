@@ -43,8 +43,8 @@ function Footer() {
               MDN Docs
             </a>
 
-            <a href="https://javascript.info" target="_blank" rel="noreferrer">
-              JavaScript.info
+            <a href="https://www.youtube.com/@chaiaurcode" target="_blank" rel="noreferrer">
+              Chai Aur Code Youtube Channel
             </a>
           </div>
         </div>
