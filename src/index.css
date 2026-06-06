@@ -40,6 +40,22 @@ html {
     transparent;
 }
 
+.code-loading {
+  padding: 2rem;
+
+  border-radius: 16px;
+
+  border: 1px solid var(--border);
+
+  background: var(--bg-card);
+
+  color: var(--text-secondary);
+
+  text-align: center;
+
+  font-size: 0.95rem;
+}
+
 #root {
  
   max-width: 100%;

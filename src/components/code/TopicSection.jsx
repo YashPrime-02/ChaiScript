@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { useState, lazy, Suspense } from "react";
 
 import {
   oneDark,
@@ -8,6 +6,19 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { useTheme } from "../../context/ThemeContext";
+
+const SyntaxHighlighter = lazy(async () => {
+  const [{ LightAsync }, { default: javascript }] = await Promise.all([
+    import("react-syntax-highlighter"),
+    import("react-syntax-highlighter/dist/esm/languages/prism/javascript"),
+  ]);
+
+  LightAsync.registerLanguage("javascript", javascript);
+
+  return {
+    default: LightAsync,
+  };
+});
 
 export default function TopicSection({ section, index }) {
   const { theme } = useTheme();
@@ -53,14 +64,20 @@ export default function TopicSection({ section, index }) {
 
       {expanded && (
         <div className="topic-section__body">
-          <SyntaxHighlighter
-            language="javascript"
-            style={theme === "dark" ? oneDark : oneLight}
-            showLineNumbers
-            wrapLongLines
+          <Suspense
+            fallback={
+              <div className="code-loading">Loading code example...</div>
+            }
           >
-            {section.rawCode}
-          </SyntaxHighlighter>
+            <SyntaxHighlighter
+              language="javascript"
+              style={theme === "dark" ? oneDark : oneLight}
+              showLineNumbers
+              wrapLongLines
+            >
+              {section.rawCode}
+            </SyntaxHighlighter>
+          </Suspense>
         </div>
       )}
     </section>

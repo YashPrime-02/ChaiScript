@@ -6,6 +6,7 @@ A modern, structured, and beautifully organized JavaScript learning & revision p
 
 ---
 
+
 ## 🎯 About ChaiScript
 
 ChaiScript is a **personal + public** JavaScript knowledge platform designed for developers who want to deeply understand JavaScript — from fundamentals to advanced concepts.
@@ -14,15 +15,18 @@ It serves as both a **revision tool** and a **learning journey**, with clean cod
 
 ---
 
-## ✨ Features
 
-- **Topic-wise Organized** learning modules
-- Clean, well-commented code examples
-- Real-world implementations (DOM, Events, API, etc.)
-- Advanced JavaScript concepts (Closures, Prototypes, OOP, etc.)
-- Modern React-based frontend (Vite + React)
-- Monorepo architecture for scalability
-- Responsive & beautiful UI
+
+## 🚀 Highlights
+
+- Interactive GSAP Scroll Experiences
+- JavaScript Revision Focused
+- Topic-Based Learning Structure
+- Responsive Premium UI
+- Search Functionality
+- Topic Detail Pages
+- Behind The Site Story Experience
+- Performance Optimized
 
 ---
 
@@ -52,68 +56,56 @@ It serves as both a **revision tool** and a **learning journey**, with clean cod
 ---
 
 ## 🏗️ Tech Stack
+- React 19
+- Vite
+- React Router
+- GSAP
+- Framer Motion
+- Axios
+- React Query
+- Custom CSS
+- Vercel Deployment
 
-- **Frontend**: React + Vite + TypeScript (Planned)
-- **Styling**: Tailwind CSS / Custom CSS
-- **State Management**: Context API + Custom Hooks
-- **Architecture**: Monorepo (Turborepo style)
-- **Backend (Phase 2)**: Node.js + Express
+
 
 ---
 
 ## 📁 Project Structure
 
 ```bash
-ChaiScript/
-├── apps/
-│   └── web/              # Main React Application
-├── packages/
-│   ├── ui/               # Reusable components
-│   ├── hooks/            # Custom hooks
-│   ├── animations/
-│   └── types/
-├── public/
-├── src/
-├── api
+
+src/
+│
+├── api/
 │   ├── axios.js
+│   ├── queries.js
 │   └── topics.api.js
 │
-├── assets
+├── assets/
 │
-├── animations
+├── components/
+│   ├── common/
+│   ├── cards/
+│   ├── code/
+│   └── navigation/
 │
-├── components
-│   │
-│   ├── common
-│   ├── layout
-│   ├── navigation
-│   ├── cards
-│   ├── code
-│   ├── progress
-│   └── hero
+├── layouts/
 │
-├── context
+├── pages/
+│   ├── Home/
+│   ├── Topics/
+│   ├── TopicDetails/
+│   ├── Search/
+│   ├── BackgroundBehindSite/
+│   └── NotFound/
 │
-├── hooks
+├── routes/
 │
-├── layouts
+├── services/
 │
-├── pages
-│   │
-│   ├── Home
-│   ├── Topics
-│   ├── TopicDetails
-│   ├── Search
-│   ├── BackgroundBehindSite
-│   └── NotFound
+├── styles/
 │
-├── routes
-│
-├── services
-│
-├── styles
-│
-├── utils
+├── utils/
 │
 ├── App.jsx
 └── main.jsx
