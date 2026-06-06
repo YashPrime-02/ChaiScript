@@ -71,7 +71,9 @@ function Topics() {
       );
 
     });
-
+  const totalTopics =
+  filteredTopics.length;
+  
   if (!filteredTopics.length) {
 
     return (
@@ -99,37 +101,88 @@ function Topics() {
     );
   }
 
-  return (
-    <PageContainer>
+ return (
+  <PageContainer>
 
-      <h1>
-        JavaScript Topics
-      </h1>
+    <main
+      className="topics-page"
+      aria-labelledby="topics-heading"
+    >
 
-      <SearchBar
-        value={searchTerm}
-        onChange={(e) =>
-          setSearchTerm(
-            e.target.value
-          )
-        }
-        placeholder="Search JavaScript Topics..."
-      />
+      {/* HERO */}
 
-      <p className="text-muted"
-        style={{
-          marginBottom: "1.5rem",
-        }}
+      <section
+        className="topics-hero"
+        aria-labelledby="topics-heading"
       >
-        {filteredTopics.length} Topics Found
-      </p>
 
-      <TopicGrid
-        topics={filteredTopics}
-      />
+        <div className="topics-hero__orb topics-hero__orb--one" />
+        <div className="topics-hero__orb topics-hero__orb--two" />
 
-    </PageContainer>
-  );
+        <div className="topics-hero__content">
+
+          <span className="topics-hero__badge">
+            JavaScript Revision Platform
+          </span>
+
+          <h1
+            id="topics-heading"
+            className="topics-hero__title"
+          >
+            JavaScript Topics
+          </h1>
+
+          <p className="topics-hero__description">
+            Explore structured JavaScript concepts,
+            interview preparation material,
+            revision notes, and practical examples.
+          </p>
+
+          <div
+            className="topics-search"
+            role="search"
+          >
+            <SearchBar
+              value={searchTerm}
+              onChange={(e) =>
+                setSearchTerm(
+                  e.target.value
+                )
+              }
+              placeholder="Search JavaScript Topics..."
+            />
+          </div>
+
+          <div
+            className="topics-stats"
+            aria-live="polite"
+          >
+            <span>
+              {totalTopics}
+            </span>
+
+            Topics Available
+          </div>
+
+        </div>
+
+      </section>
+
+      <section
+        className="topics-grid-section"
+        aria-label="JavaScript Topics List"
+      >
+
+        <TopicGrid
+          topics={filteredTopics}
+        />
+
+      </section>
+
+    </main>
+
+  </PageContainer>
+);
 }
 
 export default Topics;
