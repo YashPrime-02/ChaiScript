@@ -29,3 +29,132 @@
     0 0 0 4px
     rgba(99, 102, 241, 0.15);
 }
+
+@media (max-width: 992px) {
+
+  .search-input {
+    font-size: 0.95rem;
+
+    padding: 0.95rem 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .search-bar {
+    margin-bottom: 1.5rem;
+  }
+
+  .search-input {
+    padding: 0.9rem 1rem;
+
+    border-radius: 14px;
+
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .search-input {
+    padding: 0.85rem 0.95rem;
+
+    font-size: 0.9rem;
+
+    border-radius: 12px;
+  }
+}
+
+/* =====================================
+   WCAG ACCESSIBILITY ADDITIONS
+===================================== */
+
+/* Better readability */
+
+.search-input {
+  line-height: 1.5;
+
+  min-height: 48px;
+}
+
+/* Placeholder visibility */
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+
+  opacity: 0.85;
+}
+
+/* Keyboard accessibility */
+
+.search-input:focus-visible {
+  outline: 3px solid var(--focus-ring);
+
+  outline-offset: 2px;
+}
+
+/* Hover state */
+
+.search-input:hover {
+  border-color: var(--accent);
+}
+
+/* Disabled state */
+
+.search-input:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* Error state support */
+
+.search-input[aria-invalid="true"] {
+  border-color: var(--danger);
+
+  box-shadow:
+    0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+/* Better autofill support */
+
+.search-input:-webkit-autofill,
+.search-input:-webkit-autofill:hover,
+.search-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* High contrast mode */
+
+@media (prefers-contrast: more) {
+
+  .search-input {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .search-input {
+    transition: none;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .search-input {
+    width: 100%;
+
+    margin: 1rem 0;
+
+    padding: 0.9rem 1rem;
+
+    font-size: 16px; /* prevents iOS zoom */
+  }
+}

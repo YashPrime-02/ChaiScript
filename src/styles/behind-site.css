@@ -836,3 +836,116 @@
 .build-card:hover::before {
   opacity: 1;
 }
+
+
+/* =====================================
+   WCAG ACCESSIBILITY ENHANCEMENTS
+===================================== */
+
+/* Keyboard Navigation */
+
+.build-card:focus-visible,
+.word:focus-visible,
+.scroll-down:focus-visible {
+  outline: 3px solid var(--focus-ring);
+
+  outline-offset: 4px;
+
+  border-radius: 12px;
+}
+
+/* Better Heading Wrapping */
+
+.hero-story h1,
+.story-text,
+.statement h2,
+.birth h2 {
+  text-wrap: balance;
+}
+
+/* Better Paragraph Readability */
+
+.birth p,
+.build-card p {
+  max-width: 70ch;
+
+  margin-inline: auto;
+}
+
+/* Long Word Protection */
+
+.build-card,
+.story-text,
+.statement h2 {
+  overflow-wrap: break-word;
+}
+
+/* Touch Target Improvements */
+
+.scroll-down {
+  min-height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+/* Reduced Motion Support */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .orb,
+  .orb-1,
+  .orb-2,
+  .orb-3,
+  .birth-circle,
+  .birth-circle-2,
+  .scroll-down,
+  .stars span,
+  .hero-story::before {
+    animation: none !important;
+  }
+
+  .build-card,
+  .word {
+    transition: none !important;
+  }
+
+  .build-card:hover,
+  .word:hover {
+    transform: none !important;
+  }
+}
+
+/* High Contrast Mode */
+
+@media (prefers-contrast: more) {
+
+  .build-card,
+  .word {
+    border-width: 2px;
+  }
+
+  .accent-text {
+    -webkit-text-fill-color: currentColor;
+
+    background: none;
+
+    color: var(--accent);
+  }
+}
+
+/* Better Mobile Text */
+
+@media (max-width: 768px) {
+
+  .hero-small {
+    letter-spacing: 2px;
+  }
+
+  .build-card p {
+    line-height: 1.7;
+  }
+}

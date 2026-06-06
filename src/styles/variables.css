@@ -38,3 +38,90 @@
 
   --border: #e5e5e5;
 }
+
+/* =====================================
+   WCAG ACCESSIBILITY VARIABLES
+===================================== */
+
+:root {
+
+  /* Focus Ring */
+
+  --focus-ring: #a78bfa;
+
+  /* Status Colors */
+
+  --success: #22c55e;
+
+  --warning: #f59e0b;
+
+  --danger: #ef4444;
+
+  /* Accessible Shadows */
+
+  --shadow-sm:
+    0 2px 8px rgba(0,0,0,.08);
+
+  --shadow-md:
+    0 10px 30px rgba(0,0,0,.15);
+
+  --shadow-lg:
+    0 20px 60px rgba(0,0,0,.25);
+}
+
+/* =====================================
+   HIGH CONTRAST MODE
+===================================== */
+
+@media (prefers-contrast: more) {
+
+  [data-theme="dark"] {
+
+    --text-secondary: #d4d4d4;
+
+    --border: #4a4a4a;
+
+    --focus-ring: #c4b5fd;
+  }
+
+  [data-theme="light"] {
+
+    --text-secondary: #333333;
+
+    --border: #bdbdbd;
+
+    --focus-ring: #6d28d9;
+  }
+}
+
+/* =====================================
+   FORCED COLORS SUPPORT
+   (Windows High Contrast Mode)
+===================================== */
+
+@media (forced-colors: active) {
+
+  :root {
+
+    --accent: Highlight;
+
+    --focus-ring: Highlight;
+  }
+}
+
+/* =====================================
+   REDUCED TRANSPARENCY SUPPORT
+===================================== */
+
+@media (prefers-reduced-transparency: reduce) {
+
+  [data-theme="dark"] {
+
+    --bg-card: #1e1e1e;
+  }
+
+  [data-theme="light"] {
+
+    --bg-card: #ffffff;
+  }
+}

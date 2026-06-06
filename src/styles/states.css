@@ -162,3 +162,113 @@
   }
 }
 
+
+
+/* =====================================
+   WCAG ACCESSIBILITY ADDITIONS
+===================================== */
+
+/* Better text readability */
+
+.loader-content p,
+.state-card h2 {
+  line-height: 1.4;
+}
+
+.loader-content span,
+.state-card p {
+  line-height: 1.7;
+
+  max-width: 60ch;
+
+  margin-inline: auto;
+}
+
+/* Keyboard focus support */
+
+.state-card:focus-within,
+.loader-card:focus-within {
+  outline: 3px solid var(--focus-ring);
+
+  outline-offset: 4px;
+}
+
+/* Better error visibility */
+
+.error-card {
+  border-width: 2px;
+}
+
+/* High contrast support */
+
+@media (prefers-contrast: more) {
+
+  .loader-card,
+  .state-card {
+    border-width: 2px;
+  }
+
+  .loader-spinner {
+    border-width: 5px;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .loader-spinner {
+    animation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+/* Better card sizing */
+
+.loader-card,
+.state-card {
+  overflow-wrap: break-word;
+}
+
+/* Improve state icon rendering */
+
+.state-icon {
+  line-height: 1;
+}
+
+/* Better touch devices */
+
+@media (hover: none) {
+
+  .loader-card,
+  .state-card {
+    box-shadow:
+      0 6px 24px rgba(0,0,0,.18);
+  }
+}
+
+/* Small screens */
+
+@media (max-width: 480px) {
+
+  .loader-content {
+    padding: 1.5rem;
+  }
+
+  .state-card {
+    padding: 1.5rem;
+  }
+
+  .loader-content p,
+  .state-card h2 {
+    font-size: 1rem;
+  }
+
+  .loader-content span,
+  .state-card p {
+    font-size: 0.9rem;
+  }
+}

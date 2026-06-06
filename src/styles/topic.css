@@ -37,3 +37,121 @@
 .text-muted{
   font-size: 28px;
 }
+
+/* =====================================
+   WCAG ACCESSIBILITY ADDITIONS
+===================================== */
+
+/* Better section spacing */
+
+.topic-section {
+  scroll-margin-top: 120px;
+}
+
+/* Focus states */
+
+.topic-section h2:focus-visible,
+.copy-btn:focus-visible {
+  outline: 3px solid var(--focus-ring);
+
+  outline-offset: 4px;
+
+  border-radius: 8px;
+}
+
+/* Better code readability */
+
+.topic-section code {
+  font-size: 0.95rem;
+
+  line-height: 1.8;
+
+  tab-size: 2;
+}
+
+/* Improve code block scrolling */
+
+.topic-section pre {
+  scrollbar-width: thin;
+
+  scrollbar-color: var(--accent) transparent;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Code block focus */
+
+.topic-section pre:focus-visible {
+  outline: 2px solid var(--focus-ring);
+
+  outline-offset: 3px;
+}
+
+/* Long content handling */
+
+.topic-section {
+  overflow-wrap: break-word;
+
+  word-break: break-word;
+}
+
+/* Better heading readability */
+
+.topic-section h2 {
+  line-height: 1.3;
+}
+
+/* Improve copy button touch targets */
+
+.copy-btn {
+  min-height: 44px;
+
+  min-width: 44px;
+}
+
+/* Better source file visibility */
+
+.topic-section__source {
+  color: var(--text-secondary);
+
+  font-size: 0.9rem;
+}
+
+/* Selection inside code */
+
+.topic-section code::selection,
+.topic-section pre::selection {
+  background: rgba(124, 58, 237, 0.35);
+}
+
+/* Mobile improvements */
+
+@media (max-width: 768px) {
+
+  .topic-section {
+    margin-top: 2rem;
+  }
+
+  .topic-section pre {
+    padding: 0.75rem;
+  }
+
+  .topic-section code {
+    font-size: 0.85rem;
+  }
+
+  .text-muted {
+    font-size: 22px;
+  }
+}
+
+/* Reduced motion users */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .topic-section,
+  .copy-btn,
+  .topic-section pre {
+    transition: none !important;
+  }
+}

@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-*{
+a {
   text-decoration: none;
 }
 
@@ -58,7 +58,7 @@ html {
 
 #root {
  
-  max-width: 100%;
+ 
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
@@ -66,4 +66,160 @@ html {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+
+/* =====================================
+   WCAG ACCESSIBILITY ADDITIONS
+===================================== */
+
+/* Better text rendering */
+
+html {
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent box sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Keyboard focus visibility */
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+
+  outline-offset: 4px;
+
+  border-radius: 8px;
+}
+
+/* Interactive elements */
+
+a,
+button,
+input,
+textarea,
+select,
+[role="button"] {
+  min-height: 44px;
+}
+
+/* Better button cursor */
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Disabled states */
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+/* Better text selection */
+
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(124, 58, 237, 0.35);
+
+  color: #ffffff;
+}
+
+/* Prevent oversized media */
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+
+  height: auto;
+}
+
+/* Screen reader utility */
+
+.visually-hidden {
+  position: absolute !important;
+
+  width: 1px !important;
+
+  height: 1px !important;
+
+  padding: 0 !important;
+
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+
+  white-space: nowrap !important;
+
+  border: 0 !important;
+}
+
+/* Improve anchor visibility */
+
+a {
+  text-underline-offset: 3px;
+
+  text-decoration-thickness: 2px;
+}
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast users */
+
+@media (prefers-contrast: more) {
+  :focus-visible {
+    outline-width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b794ff;
+  }
+}
+
+/* Better tap highlight on mobile */
+
+a,
+button {
+  -webkit-tap-highlight-color: rgba(124, 58, 237, 0.25);
 }

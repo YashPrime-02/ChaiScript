@@ -2,10 +2,8 @@
   display: grid;
 
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(320px, 1fr)
-    );
+    repeat(auto-fit,
+      minmax(320px, 1fr));
 
   gap: 1.75rem;
 
@@ -51,11 +49,9 @@
   width: 100%;
   height: 3px;
 
-  background: linear-gradient(
-    90deg,
-    var(--accent),
-    #9f67ff
-  );
+  background: linear-gradient(90deg,
+      var(--accent),
+      #9f67ff);
 
   transform: scaleX(0);
 
@@ -74,11 +70,9 @@
   opacity: 0;
 
   background:
-    radial-gradient(
-      circle at top right,
+    radial-gradient(circle at top right,
       rgba(124, 58, 237, 0.15),
-      transparent 60%
-    );
+      transparent 60%);
 
   transition: opacity 0.35s ease;
 
@@ -157,8 +151,7 @@
 
 .topic-card:active {
   transform:
-    translateY(-4px)
-    scale(0.99);
+    translateY(-4px) scale(0.99);
 }
 
 @media (max-width: 992px) {
@@ -196,4 +189,3 @@
     flex-wrap: wrap;
   }
 }
-

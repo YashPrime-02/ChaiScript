@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import PageContainer from "../../layouts/PageContainer";
 import LoadingState from "../../components/common/LoadingState";
 import ErrorState from "../../components/common/ErrorState";
@@ -13,324 +10,268 @@ import CountUpModule from "react-countup";
 
 import "../../styles/Home.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Home() {
   const CountUp = CountUpModule.default;
-  const trackRef = useRef(null);
   const { data, isLoading, error } = useTopics();
 
-  useEffect(() => {
-    // Clear any existing triggers first (very important)
-    ScrollTrigger.getAll().forEach((st) => st.kill());
+  const ecosystemConcepts = [
+    {
+      icon: "🔒",
+      title: "Closures",
+      description: "Master lexical scope and function memory.",
+    },
+    {
+      icon: "🤝",
+      title: "Promises",
+      description: "Handle asynchronous operations elegantly.",
+    },
+    {
+      icon: "⚡",
+      title: "Async Await",
+      description: "Write cleaner asynchronous JavaScript.",
+    },
+    {
+      icon: "📦",
+      title: "Objects",
+      description: "Understand data structures and references.",
+    },
+    {
+      icon: "📚",
+      title: "Arrays",
+      description: "Work efficiently with collections of data.",
+    },
+    {
+      icon: "🌐",
+      title: "DOM",
+      description: "Manipulate web pages dynamically.",
+    },
+    {
+      icon: "🎯",
+      title: "Events",
+      description: "Respond to user interactions effectively.",
+    },
+    {
+      icon: "🏗️",
+      title: "Classes",
+      description: "Build reusable object-oriented structures.",
+    },
+    {
+      icon: "🧬",
+      title: "Prototypes",
+      description: "Understand JavaScript inheritance deeply.",
+    },
+  ];
 
-    const ctx = gsap.context(() => {
-      // HERO ANIMATIONS
-      gsap
-        .timeline()
-        .from(".topics-badge", { y: 40, opacity: 0, duration: 0.8 })
-        .from(".topics-title", { y: 120, opacity: 0, duration: 1.2 }, "-=0.4")
-        .from(
-          ".topics-description",
-          { y: 80, opacity: 0, duration: 1 },
-          "-=0.8",
-        )
-        .from(".hero-actions", { y: 60, opacity: 0, duration: 1 }, "-=0.6");
-
-      // Hero Parallax
-      gsap.to(".topics-title", {
-        yPercent: 35,
-        scrollTrigger: {
-          trigger: ".topics-hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      gsap.to(".topics-description", {
-        yPercent: 55,
-        scrollTrigger: {
-          trigger: ".topics-hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // CONCEPT WALL - Horizontal Scroll
-      if (trackRef.current) {
-        const track = trackRef.current;
-        const distance = track.scrollWidth - window.innerWidth + 150;
-
-        gsap.to(track, {
-          x: -distance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".concept-wall",
-            start: "top top",
-            end: () => `+=${distance}`,
-            scrub: 1.2,
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-
-      // STATS
-      gsap.from(".wall-item", {
-        y: 100,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".stats-wall", start: "top 80%" },
-      });
-
-      // LEARNING STORY
-      gsap.set(".learning-step", { opacity: 0, scale: 0.85 });
-
-      const learningTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".learning-story",
-          start: "top top",
-          end: "+=2800",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      learningTl
-        .to(".step-1", { opacity: 1, scale: 1 })
-        .to(".step-1", { opacity: 0, scale: 0.85 }, "+=0.5")
-        .to(".step-2", { opacity: 1, scale: 1 })
-        .to(".step-2", { opacity: 0, scale: 0.85 }, "+=0.5")
-        .to(".step-3", { opacity: 1, scale: 1 })
-        .to(".step-3", { opacity: 0, scale: 0.85 }, "+=0.5")
-        .to(".step-4", { opacity: 1, scale: 1 });
-
-      // WHY ITEMS
-      gsap.utils.toArray(".why-item").forEach((item) => {
-        gsap.from(item, {
-          x: item.classList.contains("reveal-left") ? -80 : 80,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      });
-
-      // FEATURED
-      gsap.from(".premium-card", {
-        y: 100,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".featured-grid", start: "top 82%" },
-      });
-
-      // CONTACT
-      gsap.from(".contact-cta__content", {
-        y: 80,
-        opacity: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".contact-cta", start: "top 75%" },
-      });
-    });
-
-    // Force refresh after everything mounts
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 400);
-
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
-  }, []); // ← Empty dependency is intentional
+  const features = [
+    {
+      icon: "📘",
+      title: "Structured Notes",
+    },
+    {
+      icon: "💻",
+      title: "Real Code Examples",
+    },
+    {
+      icon: "🎯",
+      title: "Interview Concepts",
+    },
+    {
+      icon: "⚡",
+      title: "Quick Revision",
+    },
+    {
+      icon: "🌙",
+      title: "Dark Mode",
+    },
+    {
+      icon: "🚀",
+      title: "Beginner Friendly",
+    },
+  ];
 
   if (isLoading) return <LoadingState message="Loading Topics..." />;
   if (error) return <ErrorState message="Failed To Load Topics" />;
   if (!data?.data?.length) return <EmptyState message="No Topics Found" />;
 
-  const featuredTopics = data.data.slice(0, 3);
-
   return (
     <PageContainer>
-      {/* HERO */}
-      <section className="topics-hero">
-        <div className="hero-orb" />
-        <div className="hero-grid" />
-        <span className="topics-badge">JavaScript Revision Platform</span>
-        <h1 className="topics-title">
-          Master JavaScript Through Structured Revision
-        </h1>
-        <p className="topics-description">
-          Learn from beginner to advanced concepts with real code examples,
-          interview notes, revision-friendly explanations and practical
-          JavaScript knowledge.
-        </p>
+      <main id="main-content">
+        {/* HERO */}
+        <section className="hero" aria-labelledby="hero-heading">
+          <div className="hero__bg-orb hero__bg-orb--one" />
+          <div className="hero__bg-orb hero__bg-orb--two" />
 
-        <div className="hero-actions">
-          <Link to="/topics" className="hero-btn hero-btn--primary">
-            🚀 Explore Topics
-          </Link>
-          <Link
-            to="/background-behind-site"
-            className="hero-btn hero-btn--secondary"
-          >
-            📖 Behind The Site
-          </Link>
-        </div>
-      </section>
+          <div className="hero__content">
+            <span className="hero__badge">JavaScript Revision Platform</span>
 
-      {/* CONCEPT WALL */}
-      <section className="concept-wall">
-        <div className="section-tag">JAVASCRIPT ECOSYSTEM</div>
-        <div ref={trackRef} className="topics-track">
-          {[
-            "Closures",
-            "Promises",
-            "Async Await",
-            "Objects",
-            "Arrays",
-            "DOM",
-            "Events",
-            "Classes",
-            "Prototypes",
-          ].map((word) => (
-            <div key={word} className="topic-word">
-              {word}
+            <h1 id="hero-heading" className="hero__title">
+              Master JavaScript
+              <span> Through Structured Revision</span>
+            </h1>
+
+            <p className="hero__description">
+              Learn from beginner to advanced concepts with real code examples,
+              interview notes, revision-friendly explanations and practical
+              JavaScript knowledge.
+            </p>
+
+            <div className="hero__actions">
+              <Link
+                to="/topics"
+                className="btn btn--primary"
+                aria-label="Explore JavaScript Topics"
+              >
+                🚀 Explore Topics
+              </Link>
+
+              <Link
+                to="/background-behind-site"
+                className="btn btn--secondary"
+                aria-label="Read Background Behind The Site"
+              >
+                📖 Behind The Site
+              </Link>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* STATS WALL */}
-      <section className="stats-wall">
-        <div className="stats-bg" />
-        <div className="wall-item">
-          <h2>
-            <CountUp end={data.data.length} duration={2} />
-          </h2>
-          <p>JavaScript Topics</p>
-        </div>
-        <div className="wall-item">
-          <h2>
-            <CountUp end={1500} duration={2} />+
-          </h2>
-          <p>Code Snippets</p>
-        </div>
-        <div className="wall-item">
-          <h2>
-            <CountUp end={100} duration={2} />+
-          </h2>
-          <p>Interview Concepts</p>
-        </div>
-      </section>
-
-      {/* LEARNING STORY */}
-      <section className="learning-story">
-        <div className="story-progress" />
-        <div className="learning-step step-1">
-          <span>01</span>
-          <h2>Basics</h2>
-          <p>Variables, Data Types, Memory, Strings</p>
-        </div>
-        <div className="learning-step step-2">
-          <span>02</span>
-          <h2>Core Concepts</h2>
-          <p>Arrays, Objects, Functions, Scope</p>
-        </div>
-        <div className="learning-step step-3">
-          <span>03</span>
-          <h2>Advanced JS</h2>
-          <p>Closures, Prototypes, Classes</p>
-        </div>
-        <div className="learning-step step-4">
-          <span>04</span>
-          <h2>Interview Prep</h2>
-          <p>Real Questions & Revision Notes</p>
-        </div>
-      </section>
-
-      {/* WHY CHAISCRIPT */}
-      <section className="why-chaiscript">
-        <div className="why-left">
-          <h2>Why ChaiScript?</h2>
-        </div>
-        <div className="why-right">
-          {[
-            { text: "📘 Structured Notes", side: "reveal-left" },
-            { text: "💻 Real Code Examples", side: "reveal-right" },
-            { text: "🎯 Interview Concepts", side: "reveal-left" },
-            { text: "⚡ Quick Revision", side: "reveal-left" },
-            { text: "🌙 Dark Mode", side: "reveal-right" },
-            { text: "🚀 Beginner Friendly", side: "reveal-left" },
-          ].map((item, i) => (
-            <div key={i} className={`why-item ${item.side}`}>
-              {item.text}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FEATURED TOPICS */}
-      {/* <section className="featured-topics">
-        <h2>Popular Topics</h2>
-        <div className="featured-grid">
-          {featuredTopics.map((topic) => (
-            <Link
-              key={topic.id}
-              to={`/topic/${topic.id}`}
-              className="premium-card"
-            >
-              <h3>{topic.title}</h3>
-              <p>{topic.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section> */}
-
-      {/* CONTACT CTA */}
-      <section className="contact-cta">
-        <div className="cta-orb" />
-        <div className="cta-grid" />
-        <div className="contact-cta__content">
-          <span className="contact-badge">
-            🚀 Let's Build Better JavaScript Knowledge
-          </span>
-          <h2>Have A Topic Suggestion, Question, Or Feedback?</h2>
-          <p>
-            ChaiScript is continuously evolving. If you've found a bug, want a
-            topic covered...
-          </p>
-          <div className="contact-actions">
-            <a
-              href="mailto:yashprime000@gmail.com"
-              className="hero-btn hero-btn--primary"
-            >
-              ✉️ Send Email
-            </a>
-            <a
-              href="mailto:yashprime000@gmail.com?subject=ChaiScript%20Topic%20Suggestion"
-              className="hero-btn hero-btn--primary"
-            >
-              💡 Suggest Topic
-            </a>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* STATS */}
+        <section className="stats" aria-labelledby="stats-heading">
+          <h2 id="stats-heading" className="sr-only">
+            Platform Statistics
+          </h2>
+
+          <div className="stats__grid">
+            <article className="stat-card">
+              <span className="stat-card__label">Topics</span>
+
+              <h3>
+                <CountUp end={data.data.length} duration={2} />
+              </h3>
+
+              <p>JavaScript Topics</p>
+            </article>
+
+            <article className="stat-card">
+              <span className="stat-card__label">Snippets</span>
+
+              <h3>
+                <CountUp end={1500} duration={2} />+
+              </h3>
+
+              <p>Code Snippets</p>
+            </article>
+
+            <article className="stat-card">
+              <span className="stat-card__label">Interviews</span>
+
+              <h3>
+                <CountUp end={100} duration={2} />+
+              </h3>
+
+              <p>Interview Concepts</p>
+            </article>
+          </div>
+        </section>
+
+        {/* ECOSYSTEM */}
+        <section className="ecosystem" aria-labelledby="ecosystem-heading">
+          <div className="section-header">
+            <span className="section-tag">JAVASCRIPT ECOSYSTEM</span>
+
+            <h2 id="ecosystem-heading">Core Concepts You Need</h2>
+
+            <p>
+              Build a strong JavaScript foundation through practical concepts
+              used in real-world development.
+            </p>
+          </div>
+
+          <div className="ecosystem__grid">
+            {ecosystemConcepts.map((item) => (
+              <article
+                key={item.title}
+                className="ecosystem-card"
+                tabIndex="0"
+                aria-label={item.title}
+              >
+                <span className="ecosystem-card__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* WHY */}
+        <section className="why" aria-labelledby="why-heading">
+          <div className="why__left">
+            <span className="section-tag">WHY CHAISCRIPT</span>
+
+            <h2 id="why-heading">Revision Built For Developers</h2>
+
+            <p>
+              Designed specifically for developers who want structured learning,
+              interview preparation, and quick revision resources.
+            </p>
+          </div>
+
+          <div className="why__right">
+            {features.map((feature) => (
+              <article
+                key={feature.title}
+                className="feature-card"
+                tabIndex="0"
+              >
+                <span className="feature-card__icon" aria-hidden="true">
+                  {feature.icon}
+                </span>
+
+                <span className="feature-card__title">{feature.title}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="contact" aria-labelledby="contact-heading">
+          <div className="contact__content">
+            <span className="contact__badge">
+              🚀 Let's Build Better JavaScript Knowledge
+            </span>
+
+            <h2 id="contact-heading">
+              Have A Topic Suggestion, Question, Or Feedback?
+            </h2>
+
+            <p>
+              ChaiScript is continuously evolving. I'd love to hear from you.
+            </p>
+
+            <div className="contact__actions">
+              <a
+                href="mailto:yashprime000@gmail.com"
+                className="btn btn--primary"
+                aria-label="Send Email"
+              >
+                ✉️ Send Email
+              </a>
+
+              <a
+                href="mailto:yashprime000@gmail.com?subject=ChaiScript%20Topic%20Suggestion"
+                className="btn btn--secondary"
+                aria-label="Suggest A Topic"
+              >
+                💡 Suggest Topic
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
     </PageContainer>
   );
 }

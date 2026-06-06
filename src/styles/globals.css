@@ -28,3 +28,99 @@ body {
 
   
 }
+
+/* =====================================
+   ACCESSIBILITY + QUALITY
+===================================== */
+
+html {
+  -webkit-text-size-adjust: 100%;
+
+  text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.5;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better media defaults */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+
+  max-width: 100%;
+}
+
+/* Forms inherit font */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Prevent text overflow */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Keyboard accessibility */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+
+  outline-offset: 3px;
+
+  border-radius: 6px;
+}
+
+/* Selection styling */
+
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+
+  color: var(--text-primary);
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
