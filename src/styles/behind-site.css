@@ -227,67 +227,101 @@
 /* =====================================
    STATEMENT
 ===================================== */
-
+/* Inspired By Section - WCAG Compliant */
 .statement {
-  min-height: 100vh;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-  align-items: center;
-
   text-align: center;
-
-  position: relative;
+  padding: 3rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .statement h2 {
-  font-size:
-    clamp(5rem,
-      10vw,
-      10rem);
-
-  line-height: .95;
-
-  font-weight: 900;
-
-  letter-spacing: -5px;
-
-  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-.accent-text {
-  background:
-    linear-gradient(90deg,
-      #7c3aed,
-      #a855f7);
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.statement .accent-text {
+  color: #f97316; /* Orange accent - Chai theme */
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
 }
 
-.statement::after {
-  content: "";
-
-  position: absolute;
-
-  bottom: 5rem;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  width: 150px;
-  height: 2px;
-
-  background:
-    linear-gradient(90deg,
-      transparent,
-      var(--accent),
-      transparent);
+.topics-hero__footer-text {
+  font-size: 1.1rem;
+  line-height: 1.75;        /* Improved for readability */
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+  max-width: 70ch;          /* Better line length (WCAG) */
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Instructor Links */
+.instructor-links {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;       /* Slightly larger touch target */
+  background-color: #1f2937;
+  color: #e5e7eb;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid #374151;     /* Thicker border for better visibility */
+  min-height: 44px;              /* WCAG minimum touch target size */
+  line-height: 1.2;
+}
+
+/* WCAG Focus & Hover States */
+.social-link:hover,
+.social-link:focus {
+  background-color: #f97316;
+  color: #ffffff;
+  transform: translateY(-3px);
+  border-color: #f97316;
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+  outline: none;
+}
+
+/* Strong focus indicator (very important for WCAG) */
+.social-link:focus-visible {
+  outline: 3px solid #f97316;
+  outline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .statement h2 {
+    font-size: 1.65rem;
+  }
+  
+  .statement .accent-text {
+    font-size: 2rem;
+  }
+  
+  .instructor-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-link {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
 /* =====================================
    CHAISCRIPT REVEAL
 ===================================== */
