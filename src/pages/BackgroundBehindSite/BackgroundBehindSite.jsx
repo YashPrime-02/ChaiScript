@@ -222,29 +222,48 @@ export default function BackgroundBehindSite() {
 
       {/* TRIBUTE */}
 
-      <p className="topics-hero__footer-text">
-        A tribute to <strong>Hitesh Choudhary</strong> and his incredible{" "}
-        <strong>Chai Aur Code</strong> series. His practical and engaging
-        teaching style made JavaScript accessible and enjoyable for millions,
-        including the creator of ChaiScript.
-      </p>
+      <section className="inspired-section">
+        <div className="section-header inspired-header">
+          <span className="section-tag">TRIBUTE</span>
+          <h2 className="inspired-title">Inspired By</h2>
+          <h2 className="inspired-subtitle">Chai Aur Code</h2>
+        </div>
 
-      <div className="instructor-links">
-        <a
-          href="https://www.youtube.com/@HiteshChoudharydotcom"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          YouTube → Chai aur Code
-        </a>
-        <a
-          href="https://www.linkedin.com/in/hiteshchoudhary/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-      </div>
+        <p className="inspired-description">
+          A heartfelt tribute to <strong>Hitesh Choudhary</strong>, one of
+          India’s most respected tech educators. His engaging, practical, and
+          fun teaching style has made JavaScript and modern web development
+          accessible and enjoyable for millions.
+        </p>
+
+        <p className="inspired-description">
+          Many concepts inside <strong>ChaiScript</strong> were inspired by his
+          flagship series
+          <strong>Chai aur Code</strong>.
+        </p>
+
+        <div className="instructor-links">
+          <a
+            href="https://www.youtube.com/@chaiaurcode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instructor-link"
+            aria-label="Watch Hitesh Choudhary on YouTube"
+          >
+            🎥 Watch on YouTube
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hiteshchoudhary/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instructor-link"
+            aria-label="Connect with Hitesh Choudhary on LinkedIn"
+          >
+            🔗 Connect on LinkedIn
+          </a>
+        </div>
+      </section>
+
       {/* FINAL */}
 
       <section className="birth">

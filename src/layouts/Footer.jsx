@@ -30,6 +30,7 @@ function Footer() {
             <Link to="/topics">Topics</Link>
 
             <Link to="/background-behind-site">Behind The Site</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
           </div>
 
           <div>
