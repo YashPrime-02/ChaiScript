@@ -324,12 +324,7 @@ export default function BackgroundBehindSite() {
           One place.
         </p>
 
-        <a
-          href="/topics"
-          className="explore-btn"
-        >
-          Explore Topics
-        </a>
+     
 
       </section>
 

@@ -116,7 +116,7 @@ function Topics() {
         placeholder="Search JavaScript Topics..."
       />
 
-      <p
+      <p className="text-muted"
         style={{
           marginBottom: "1.5rem",
         }}

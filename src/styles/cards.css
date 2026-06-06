@@ -10,6 +10,7 @@
   gap: 1.75rem;
 
   margin-top: 2rem;
+  padding: 2%;
 }
 
 .topic-card {
@@ -196,23 +197,3 @@
   }
 }
 
-.difficulty {
-  padding: 0.45rem 0.8rem;
-
-  border-radius: 999px;
-
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.beginner {
-  color: #22c55e;
-}
-
-.intermediate {
-  color: #f59e0b;
-}
-
-.advanced {
-  color: #ef4444;
-}
