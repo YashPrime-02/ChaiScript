@@ -239,7 +239,7 @@ export default function BackgroundBehindSite() {
         <p className="inspired-description">
           Many concepts inside <strong>ChaiScript</strong> were inspired by his
           flagship series
-          <strong>Chai aur Code</strong>.
+          <strong> Chai aur Code</strong>.
         </p>
 
         <div className="instructor-links">
