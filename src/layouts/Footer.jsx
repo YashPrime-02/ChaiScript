@@ -54,7 +54,7 @@ function Footer() {
       <div className="footer__bottom">
         <p>© {new Date().getFullYear()} ChaiScript</p>
 
-        <span>Built with React ⚛️</span>
+        <span>Built with React by Yash Mishra ⚛️</span>
       </div>
     </footer>
   );
