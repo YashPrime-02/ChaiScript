@@ -30,19 +30,17 @@ export default function ReadingProgress() {
 
   return (
     <div className="reading-progress">
-      <svg width="110" height="110">
-        <circle cx="55" cy="55" r="45" className="progress-bg" />
-
+      <svg viewBox="0 0 100 100">
+        <circle className="progress-bg" cx="50" cy="50" r="42" />
         <circle
-          cx="55"
-          cy="55"
-          r="45"
           className="progress-fill"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
+          cx="50"
+          cy="50"
+          r="42"
+          strokeDasharray="263.89" /* ≈ 2 * PI * 42 */
+          strokeDashoffset="calc(263.89 - (263.89 * progress) / 100)"
         />
       </svg>
-
       <span>{progress}%</span>
     </div>
   );

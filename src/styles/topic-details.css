@@ -346,58 +346,130 @@ html {
 
   transform: translateY(-2px);
 }
-
 /* =========================================
-   READING PROGRESS
+   READING PROGRESS - Premium Style
 ========================================= */
 
 .reading-progress {
   position: fixed;
-
-  right: 44px;
-  bottom: 44px;
-
-  width: 90px;
-  height: 90px;
-
+  right: 32px;
+  bottom: 32px;
+  width: 82px;
+  height: 82px;
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   z-index: 1000;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.reading-progress:hover {
+  transform: scale(1.1);
 }
 
 .reading-progress svg {
   position: absolute;
-
+  width: 100%;
+  height: 100%;
   transform: rotate(-90deg);
 }
 
 .progress-bg {
   fill: none;
-
   stroke: var(--border);
-
   stroke-width: 8;
 }
 
 .progress-fill {
   fill: none;
-
   stroke: var(--accent);
-
   stroke-width: 8;
-
   stroke-linecap: round;
+  transition: stroke-dashoffset 0.2s linear;
+  filter: drop-shadow(0 0 8px var(--accent));
 }
 
+/* Center Text */
 .reading-progress span {
-  font-size: 0.9rem;
-
+  position: relative;
+  z-index: 2;
+  font-size: 1.1rem;
   font-weight: 700;
-
   color: var(--text-primary);
+  user-select: none;
+}
+
+/* Small "Read" label below */
+.reading-progress::after {
+  content: "READ";
+  position: absolute;
+  bottom: -20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* =========================================
+   MEDIA QUERIES
+========================================= */
+
+@media (max-width: 1024px) {
+  .reading-progress {
+    right: 28px;
+    bottom: 28px;
+    width: 76px;
+    height: 76px;
+  }
+  
+  .reading-progress span {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reading-progress {
+    right: 20px;
+    bottom: 20px;
+    width: 68px;
+    height: 68px;
+  }
+  
+  .reading-progress span {
+    font-size: 0.98rem;
+  }
+  
+  .reading-progress::after {
+    bottom: -18px;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reading-progress {
+    right: 16px;
+    bottom: 16px;
+    width: 62px;
+    height: 62px;
+  }
+  
+  .reading-progress span {
+    font-size: 0.92rem;
+  }
+  
+  .reading-progress::after {
+    display: none; /* Hide label on very small screens */
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress,
+  .progress-fill {
+    transition: none;
+  }
 }
 
 /* =========================================
