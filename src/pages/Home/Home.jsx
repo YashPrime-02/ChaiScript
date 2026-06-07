@@ -4,10 +4,9 @@ import PageContainer from "../../layouts/PageContainer";
 import LoadingState from "../../components/common/LoadingState";
 import ErrorState from "../../components/common/ErrorState";
 import EmptyState from "../../components/common/EmptyState";
-
+import TechNewsBulletin from "../../components/TechNewsBulletin/TechNewsBulletin";
 import { useTopics } from "../../api/queries";
 import CountUpModule from "react-countup";
-
 import "../../styles/Home.css";
 
 export default function Home() {
@@ -271,6 +270,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <TechNewsBulletin />
       </main>
     </PageContainer>
   );
